@@ -1,6 +1,17 @@
+import type { Metadata } from "next";
 import SectionTitle from "@/components/SectionTitle";
 import { site } from "@/lib/site";
 
+export const metadata: Metadata = {
+  title: "Kontak",
+
+  description:
+    "Halaman kontak Sugiyarto untuk diskusi, kolaborasi, pertukaran gagasan, dan komunikasi mengenai ekonomi, perpajakan, serta kebijakan publik.",
+
+  alternates: {
+    canonical: "/contact",
+  },
+};
 export default function ContactPage() {
   return (
     <section className="container-page py-20">

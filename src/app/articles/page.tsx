@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import ArticleCard from "@/components/ArticleCard";
 import SectionTitle from "@/components/SectionTitle";
 import { articles } from "@/lib/articles";
+export const metadata: Metadata = {
+  title: "Artikel & Analisis",
 
+  description:
+    "Artikel dan analisis Sugiyarto mengenai ekonomi, perpajakan, administrasi perpajakan, kebijakan fiskal, reformasi kebijakan, dan berbagai isu kebijakan publik.",
+
+  alternates: {
+    canonical: "/articles",
+  },
+};
 export default function ArticlesPage() {
   return (
     <section className="container-page py-20">

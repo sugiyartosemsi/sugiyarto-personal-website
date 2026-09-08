@@ -1,5 +1,16 @@
+import type { Metadata } from "next";
 import SectionTitle from "@/components/SectionTitle";
 
+export const metadata: Metadata = {
+  title: "Projects",
+
+  description:
+    "Proyek dan kerangka pemikiran Sugiyarto mengenai transformasi administrasi perpajakan, perluasan basis pajak, diagnosis ekonomi, dan kualitas pertumbuhan.",
+
+  alternates: {
+    canonical: "/projects",
+  },
+};
 const projects = [
   {
     title: "Tax Administration 3.0",

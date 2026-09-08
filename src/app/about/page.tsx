@@ -1,7 +1,17 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import SectionTitle from "@/components/SectionTitle";
 import { site } from "@/lib/site";
+export const metadata: Metadata = {
+  title: "Tentang Sugiyarto",
 
+  description:
+    "Profil Sugiyarto dan perjalanan pemikiran mengenai ekonomi, perpajakan, kebijakan fiskal, transformasi administrasi, serta kebijakan publik berbasis data.",
+
+  alternates: {
+    canonical: "/about",
+  },
+};
 export default function AboutPage() {
   return (
     <section className="container-page py-20">

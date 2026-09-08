@@ -1,5 +1,16 @@
+import type { Metadata } from "next";
 import SectionTitle from "@/components/SectionTitle";
 
+export const metadata: Metadata = {
+  title: "Publikasi",
+
+  description:
+    "Publikasi, policy paper, artikel, dan karya Sugiyarto di bidang ekonomi, perpajakan, kebijakan fiskal, administrasi perpajakan, dan kebijakan publik.",
+
+  alternates: {
+    canonical: "/publications",
+  },
+};
 const items = [
   {
     type: "Policy Paper",

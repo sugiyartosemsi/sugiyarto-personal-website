@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { articles } from "@/lib/articles";
@@ -5,7 +6,34 @@ import { articles } from "@/lib/articles";
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
 }
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
 
+  const article = articles.find((item) => item.slug === slug);
+
+  if (!article) {
+    return {
+      title: "Artikel tidak ditemukan",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  return {
+    title: article.title,
+    description: article.excerpt,
+
+    alternates: {
+      canonical: `/articles/${article.slug}`,
+    },
+  };
+}
 export default async function ArticlePage({
   params,
 }: {
