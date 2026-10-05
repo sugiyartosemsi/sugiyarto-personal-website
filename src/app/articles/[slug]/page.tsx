@@ -26,13 +26,37 @@ export async function generateMetadata({
   }
 
   return {
+  title: article.title,
+  description: article.excerpt,
+
+  alternates: {
+    canonical: `/articles/${article.slug}`,
+  },
+
+  openGraph: {
     title: article.title,
     description: article.excerpt,
+    url: `/articles/${article.slug}`,
+    siteName: "Sugiyarto",
+    locale: "id_ID",
+    type: "article",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: `${article.title} | Sugiyarto`,
+      },
+    ],
+  },
 
-    alternates: {
-      canonical: `/articles/${article.slug}`,
-    },
-  };
+  twitter: {
+    card: "summary_large_image",
+    title: article.title,
+    description: article.excerpt,
+    images: ["/og-image.png"],
+  },
+};
 }
 export default async function ArticlePage({
   params,
