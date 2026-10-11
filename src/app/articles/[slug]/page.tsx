@@ -42,7 +42,7 @@ export async function generateMetadata({
     type: "article",
     images: [
       {
-        url: "/og-image.png",
+        url: article.ogImage,
         width: 1200,
         height: 630,
         alt: `${article.title} | Sugiyarto`,
@@ -54,7 +54,7 @@ export async function generateMetadata({
     card: "summary_large_image",
     title: article.title,
     description: article.excerpt,
-    images: ["/og-image.png"],
+    images: [article.ogImage],
   },
 };
 }

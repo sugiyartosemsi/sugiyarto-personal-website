@@ -5,6 +5,7 @@ export type Article = {
   category: string;
   date: string;
   readTime: string;
+  ogImage: string;
   content: string[];
 };
 
@@ -17,6 +18,7 @@ export const articles: Article[] = [
     category: "Administasi Perpajakan",
     date: "26 Agustus 2026",
     readTime: "8 menit",
+    ogImage: "/og/articles/masa-depan-administrasi-perpajakan.png",
     content: [
       "Transformasi administrasi perpajakan tidak lagi cukup dilakukan dengan mendigitalisasi formulir dan pelaporan. Perubahan yang lebih fundamental adalah memindahkan titik awal administrasi pajak dari laporan yang disampaikan setelah transaksi terjadi menuju data transaksi yang yang terbentuk langsung di dalam proses bisnis wajib pajak",
       "Dalam paradigma tersebut, electronic invoice menjadi salah satu fondasi utama. Invoice tidak hanya berfungsi sebagai dokumen transaksi, tetapi menjadi sumber data terstruktur yang dapat diintegrasikan dengan sistem administrasi pajak, digunakan untuk perhitungan kewajiban, membentuk prefilled return, serta memperkuat analisis risiko kepatuhan.",
@@ -32,6 +34,7 @@ export const articles: Article[] = [
     category: "Ekonomi & Fiskal",
     date: "20 Agustus 2026",
     readTime: "7 menit",
+    ogImage: "/og/articles/tax-ratio-dan-kualitas-basis-pajak.png",
     content: [
       "Tax ratio sering dibahas seolah-olah hanya ditentukan oleh tarif. Padahal kualitas basis pajak, tingkat formalitas ekonomi, kapasitas administrasi, dan struktur penerimaan memiliki pengaruh yang sangat besar.",
       "Kebijakan yang baik perlu meningkatkan visibilitas transaksi dan memperbaiki kepatuhan tanpa menciptakan biaya administrasi yang berlebihan.",
@@ -46,6 +49,7 @@ export const articles: Article[] = [
     category: "Ekonomi",
     date: "15 Agustus 2026",
     readTime: "6 menit",
+    ogImage: "/og/articles/ews-ekonomi-dan-kualitas-pertumbuhan.png",
     content: [
       "Angka pertumbuhan agregat dapat terlihat kuat sementara sebagian rumah tangga atau sektor usaha mengalami tekanan. Karena itu, diagnosis ekonomi membutuhkan indikator yang menangkap kualitas transmisi pertumbuhan.",
       "Early Warning System dapat menggabungkan siklus ekonomi, tekanan rumah tangga, kondisi keuangan, faktor eksternal, dan indikator fiskal.",
