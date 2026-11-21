@@ -425,6 +425,8 @@ async function convert(file, sharp) {
   );
 
   const html = result.value
+    // Tautan dari alat bantu menulis/sitasi (mis. jenni.ai) dilepas; teks sitasinya tetap.
+    .replace(/<a [^>]*href="https?:\/\/(?:[\w-]+\.)*(?:jenni\.ai)[^"]*"[^>]*>([\s\S]*?)<\/a>/gi, "$1")
     .replace(/<img /g, '<img loading="lazy" decoding="async" ')
     .replace(/<p>(<img [^>]+>)<\/p>/g, "<figure>$1</figure>");
   // Waktu baca dihitung tanpa daftar pustaka.

@@ -6,7 +6,7 @@ Website pribadi di [www.sugiyarto.id](https://www.sugiyarto.id), dibangun dengan
 
 Unggah file Word (`.docx`) ke folder [`content/articles/`](content/articles/). Artikel terbit 1–2 menit kemudian. Panduan lengkapnya ada di [content/articles/README.md](content/articles/README.md).
 
-Dua artikel lama masih ditulis langsung di kode, di `src/lib/articles.ts`. Jika diunggah ulang sebagai file Word dengan nama yang sama dengan alamatnya, versi Word yang dipakai.
+Satu artikel lama (EWS) masih ditulis langsung di kode, di `src/lib/articles.ts`. Jika diunggah sebagai file Word dengan nama yang sama dengan alamatnya (`ews-ekonomi-dan-kualitas-pertumbuhan.docx`), versi Word yang dipakai.
 
 ## Halaman
 

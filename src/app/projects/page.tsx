@@ -30,7 +30,7 @@ const projects: Project[] = [
   },
   {
     title: "Tax Base Visibility Framework",
-    relatedArticle: "tax-ratio-dan-kualitas-basis-pajak",
+    relatedArticle: "tax-visibility-framework",
     category: "Perluasan Basis Pajak",
     description:
       "Kerangka untuk meningkatkan visibilitas aktivitas ekonomi, memperluas basis pajak, dan mendorong transisi dari invisible economy menuju ekonomi yang terdaftar, patuh, dan berkembang.",

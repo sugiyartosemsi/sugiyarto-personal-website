@@ -24,7 +24,7 @@ const projects: { title: string; description: string; articleSlug: string }[] = 
     title: "Perluasan dan Kualitas Basis Pajak",
     description:
       "Kerangka untuk meningkatkan visibilitas ekonomi informal menuju basis pajak yang lebih produktif.",
-    articleSlug: "tax-ratio-dan-kualitas-basis-pajak",
+    articleSlug: "tax-visibility-framework",
   },
   {
     title: "Diagnosis Ekonomi dan Kualitas Pertumbuhan",
