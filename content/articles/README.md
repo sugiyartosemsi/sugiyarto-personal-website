@@ -19,7 +19,7 @@ setiap kali website di-build ulang oleh Vercel (1–2 menit setelah upload).
 | Nama file | Alamat artikel |
 |---|---|
 | `tax-ratio.docx` | `/articles/tax-ratio` |
-| `masa-depan-administrasi-perpajakan.docx` | `/articles/masa-depan-administrasi-perpajakan` |
+| `electronic-invoice-administrasi-perpajakan.docx` | `/articles/electronic-invoice-administrasi-perpajakan` |
 
 Gunakan huruf kecil dan tanda hubung, tanpa spasi. Jangan mengganti nama file
 artikel yang sudah terbit, karena alamat lamanya akan hilang.

@@ -18,7 +18,7 @@ const projects: { title: string; description: string; articleSlug: string }[] = 
     title: "Transformasi Administrasi Pajak",
     description:
       "Gagasan mengenai electronic invoice, data transaksi, prefilled return, dan compliance by design.",
-    articleSlug: "masa-depan-administrasi-perpajakan",
+    articleSlug: "electronic-invoice-administrasi-perpajakan",
   },
   {
     title: "Perluasan dan Kualitas Basis Pajak",

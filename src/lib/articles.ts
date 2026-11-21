@@ -47,21 +47,6 @@ type ArticleInput = {
 
 const articleInputs: ArticleInput[] = [
   {
-    slug: "masa-depan-administrasi-perpajakan",
-    title: "Electronic Invoice dan Masa Depan Administrasi Perpajakan",
-    excerpt:
-      "Electronic invoice dapat menjadi fondasi transformasi administrasi perpajakan dari sistem berbasis laporan menuju administrasi berbasis data transaksi.",
-    category: "Administrasi Perpajakan",
-    date: "26 Agustus 2026",
-    ogImage: "/og/articles/masa-depan-administrasi-perpajakan-digital.jpg",
-    content: [
-      "Transformasi administrasi perpajakan tidak lagi cukup dilakukan dengan mendigitalisasi formulir dan pelaporan. Perubahan yang lebih fundamental adalah memindahkan titik awal administrasi pajak dari laporan yang disampaikan setelah transaksi terjadi menuju data transaksi yang terbentuk langsung di dalam proses bisnis wajib pajak.",
-      "Dalam paradigma tersebut, electronic invoice menjadi salah satu fondasi utama. Invoice tidak hanya berfungsi sebagai dokumen transaksi, tetapi menjadi sumber data terstruktur yang dapat diintegrasikan dengan sistem administrasi pajak, digunakan untuk perhitungan kewajiban, membentuk prefilled return, serta memperkuat analisis risiko kepatuhan.",
-      "Perubahan ini juga menggeser peran otoritas pajak. Fokus administrasi tidak lagi semata-mata pada pemeriksaan laporan setelah kejadian, tetapi pada pengelolaan risiko kepatuhan secara lebih dini melalui data yang lebih lengkap, terstruktur, dan tersedia mendekati waktu transaksi.",
-      "Dengan arsitektur seperti ini, electronic invoice dapat menjadi penghubung antara proses bisnis wajib pajak, perhitungan pajak, pelaporan, pengawasan, dan analisis risiko. Nilai strategisnya bukan hanya pada digitalisasi dokumen, tetapi pada kemampuannya membentuk administrasi pajak yang lebih real-time, interoperabel, dan semakin mendekati konsep compliance by design.",
-    ],
-  },
-  {
     slug: "ews-ekonomi-dan-kualitas-pertumbuhan",
     title: "Early Warning System Ekonomi dan Kualitas Pertumbuhan",
     excerpt:
