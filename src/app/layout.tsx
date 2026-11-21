@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.sugiyarto.id"),
+  metadataBase: new URL(site.url),
 
   title: {
     default: "Sugiyarto | Ekonomi, Perpajakan & Kebijakan Publik",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Sugiyarto | Ekonomi, Perpajakan & Kebijakan Publik",
     description:
       "Gagasan dan analisis mengenai ekonomi, perpajakan, kebijakan fiskal, dan kebijakan publik.",
-    url: "https://www.sugiyarto.id",
+    url: site.url,
     siteName: "Sugiyarto",
     locale: "id_ID",
     type: "website",

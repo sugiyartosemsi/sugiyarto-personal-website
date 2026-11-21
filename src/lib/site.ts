@@ -1,4 +1,5 @@
 export const site = {
+  url: "https://www.sugiyarto.id",
   name: "Sugiyarto",
   title: "Sugiyarto — Ekonomi, Perpajakan & Kebijakan Publik",
   tagline: "Ekonomi • Perpajakan • Kebijakan Publik",
