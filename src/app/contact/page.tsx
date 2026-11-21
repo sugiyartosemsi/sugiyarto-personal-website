@@ -16,7 +16,7 @@ export default function ContactPage() {
   return (
     <section className="container-page py-20">
       <SectionTitle
-        eyebrow="Contact"
+        eyebrow="Kontak"
         title="Mari bertukar gagasan"
         description="Untuk diskusi, kolaborasi, atau pertukaran pemikiran mengenai ekonomi, perpajakan, riset, dan kebijakan publik."
       />

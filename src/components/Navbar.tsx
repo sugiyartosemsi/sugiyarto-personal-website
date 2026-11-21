@@ -3,11 +3,11 @@ import { site } from "@/lib/site";
 import MobileMenu from "@/components/MobileMenu";
 
 export const nav: [string, string][] = [
-  ["About", "/about"],
-  ["Articles", "/articles"],
-  ["Publications", "/publications"],
-  ["Projects", "/projects"],
-  ["Contact", "/contact"],
+  ["Tentang", "/about"],
+  ["Artikel", "/articles"],
+  ["Publikasi", "/publications"],
+  ["Proyek", "/projects"],
+  ["Kontak", "/contact"],
 ];
 
 export default function Navbar() {

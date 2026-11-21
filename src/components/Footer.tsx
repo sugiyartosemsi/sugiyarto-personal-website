@@ -10,9 +10,9 @@ export default function Footer() {
           <p className="mt-1">{site.tagline}</p>
         </div>
         <div className="flex gap-5">
-          <Link href="/articles">Articles</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/articles">Artikel</Link>
+          <Link href="/projects">Proyek</Link>
+          <Link href="/contact">Kontak</Link>
         </div>
         <p>© {new Date().getFullYear()} {site.name}</p>
       </div>

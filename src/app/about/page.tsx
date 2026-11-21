@@ -16,7 +16,7 @@ export default function AboutPage() {
   return (
     <section className="container-page py-20">
       <SectionTitle
-        eyebrow="About"
+        eyebrow="Tentang"
         title={`Tentang ${site.name}`}
         description="Profil, gagasan, dan perjalanan pemikiran di bidang ekonomi, perpajakan, kebijakan publik dan transformasi administrasi."
       />

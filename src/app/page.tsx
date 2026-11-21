@@ -12,21 +12,24 @@ const expertise = [
   "Analisis Data & Kebijakan Publik",
 ];
 
-const projects = [
+const projects: { title: string; description: string; articleSlug: string }[] = [
   {
     title: "Transformasi Administrasi Pajak",
     description:
       "Gagasan mengenai electronic invoice, data transaksi, prefilled return, dan compliance by design.",
+    articleSlug: "masa-depan-administrasi-perpajakan",
   },
   {
     title: "Perluasan dan Kualitas Basis Pajak",
     description:
       "Kerangka untuk meningkatkan visibilitas ekonomi informal menuju basis pajak yang lebih produktif.",
+    articleSlug: "tax-ratio-dan-kualitas-basis-pajak",
   },
   {
     title: "Diagnosis Ekonomi dan Kualitas Pertumbuhan",
     description:
       "Dashboard risiko ekonomi yang menggabungkan siklus, rumah tangga, keuangan, eksternal, dan fiskal.",
+    articleSlug: "ews-ekonomi-dan-kualitas-pertumbuhan",
   },
 ];
 
@@ -36,7 +39,7 @@ export default function Home() {
       <section className="container-page grid min-h-[72vh] items-center gap-12 py-20 md:grid-cols-[1.3fr_.7fr]">
         <div>
           <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-[var(--accent)]">
-            Personal Knowledge Hub
+            Ruang Gagasan
           </p>
           <h1 className="max-w-4xl text-5xl font-semibold leading-[1.03] tracking-[-0.04em] md:text-6xl">
             Menguji gagasan, memperkaya perspektif, dan merumuskan kebijakan yang lebih baik
@@ -78,7 +81,7 @@ export default function Home() {
       <section className="border-y border-black/5 bg-white">
         <div className="container-page py-20">
           <SectionTitle
-            eyebrow="Areas of Interest"
+            eyebrow="Bidang Minat"
             title="Bidang yang saya tulis dan eksplorasi"
             description="Website ini dirancang sebagai ruang kerja intelektual: ide, analisis, kerangka kebijakan, dan proyek yang dapat terus dikembangkan."
           />
@@ -99,7 +102,7 @@ export default function Home() {
       <section className="container-page py-24">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <SectionTitle
-            eyebrow="Latest Writing"
+            eyebrow="Tulisan Terbaru"
             title="Artikel terbaru"
             description="Catatan dan analisis mengenai ekonomi, perpajakan, dan kebijakan publik."
           />
@@ -118,7 +121,7 @@ export default function Home() {
       <section className="bg-[#111915] text-white">
         <div className="container-page py-24">
           <SectionTitle
-            eyebrow="Selected Projects"
+            eyebrow="Proyek Pilihan"
             title="Proyek dan kerangka pemikiran"
             description="Beberapa proyek dapat berkembang menjadi policy paper, dashboard, artikel, atau riset yang lebih besar."
           />
@@ -127,6 +130,12 @@ export default function Home() {
               <div key={project.title} className="rounded-3xl border border-white/10 p-6">
                 <h3 className="text-xl font-semibold">{project.title}</h3>
                 <p className="mt-4 leading-7 text-white/65">{project.description}</p>
+                <Link
+                  href={`/articles/${project.articleSlug}`}
+                  className="mt-5 inline-block text-sm font-medium text-white hover:underline"
+                >
+                  Baca artikel terkait →
+                </Link>
               </div>
             ))}
           </div>
