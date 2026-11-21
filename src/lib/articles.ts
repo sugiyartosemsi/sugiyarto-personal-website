@@ -1,13 +1,35 @@
+import docxArticles from "@/generated/docx-articles.json";
+
 export type Article = ArticleInput & {
   readTime: string;
+  /** Isi artikel dalam HTML, untuk artikel yang berasal dari file Word. */
+  html?: string;
+  author?: string;
+  authorRole?: string;
 };
 
 // Kecepatan baca rata-rata ±200 kata per menit; minimal 1 menit.
 const WORDS_PER_MINUTE = 200;
 
-function readTimeOf(content: string[]): string {
-  const words = content.join(" ").trim().split(/\s+/).filter(Boolean).length;
+function readTimeFromWords(words: number): string {
   return `${Math.max(1, Math.round(words / WORDS_PER_MINUTE))} menit`;
+}
+
+function countWords(content: string[]): number {
+  return content.join(" ").trim().split(/\s+/).filter(Boolean).length;
+}
+
+const MONTHS = [
+  "januari", "februari", "maret", "april", "mei", "juni",
+  "juli", "agustus", "september", "oktober", "november", "desember",
+];
+
+/** "26 Agustus 2026" → nilai waktu, untuk mengurutkan artikel dari yang terbaru. */
+function dateValue(date: string): number {
+  const [day, month, year] = date.trim().split(/\s+/);
+  const m = MONTHS.indexOf((month || "").toLowerCase());
+  if (m < 0) return 0;
+  return new Date(Number(year), m, Number(day)).getTime();
 }
 
 type ArticleInput = {
@@ -66,7 +88,51 @@ const articleInputs: ArticleInput[] = [
   }
 ];
 
-export const articles: Article[] = articleInputs.map((article) => ({
-  ...article,
-  readTime: readTimeOf(article.content),
-}));
+type DocxArticle = {
+  slug: string;
+  title: string;
+  author?: string;
+  authorRole?: string;
+  category?: string;
+  date?: string;
+  excerpt?: string;
+  fallbackDate?: string;
+  fallbackExcerpt?: string;
+  ogImage?: string;
+  words: number;
+  html: string;
+};
+
+const DEFAULT_CATEGORY = "Artikel";
+const DEFAULT_OG_IMAGE = "/og-image.png";
+
+function fromDocx(docx: DocxArticle, base?: ArticleInput): Article {
+  // Data yang ditulis di dokumen Word didahulukan; sisanya memakai data artikel lama (bila ada).
+  return {
+    slug: docx.slug,
+    title: docx.title,
+    category: docx.category ?? base?.category ?? DEFAULT_CATEGORY,
+    date: docx.date ?? base?.date ?? docx.fallbackDate ?? "",
+    excerpt: docx.excerpt ?? base?.excerpt ?? docx.fallbackExcerpt ?? "",
+    ogImage: docx.ogImage ?? base?.ogImage ?? DEFAULT_OG_IMAGE,
+    content: [],
+    html: docx.html,
+    author: docx.author,
+    authorRole: docx.authorRole,
+    readTime: readTimeFromWords(docx.words),
+  };
+}
+
+const fromWord = new Map((docxArticles as DocxArticle[]).map((a) => [a.slug, a]));
+
+export const articles: Article[] = [
+  ...articleInputs.map((article) => {
+    const docx = fromWord.get(article.slug);
+    return docx
+      ? fromDocx(docx, article)
+      : { ...article, readTime: readTimeFromWords(countWords(article.content)) };
+  }),
+  ...(docxArticles as DocxArticle[])
+    .filter((docx) => !articleInputs.some((a) => a.slug === docx.slug))
+    .map((docx) => fromDocx(docx)),
+].sort((a, b) => dateValue(b.date) - dateValue(a.date));

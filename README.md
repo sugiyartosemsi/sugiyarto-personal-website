@@ -49,11 +49,11 @@ Di file tersebut Anda dapat mengganti:
 - lokasi
 - link LinkedIn/GitHub
 
-Artikel contoh berada di:
+Artikel ditambahkan dengan mengunggah file Word (.docx) ke folder
+`content/articles/`. Panduan lengkapnya ada di
+[content/articles/README.md](content/articles/README.md).
 
-```text
-src/lib/articles.ts
-```
+Artikel lama yang masih ditulis langsung di kode ada di `src/lib/articles.ts`.
 
 ## Deploy ke Vercel
 
@@ -68,7 +68,6 @@ src/lib/articles.ts
 ## Pengembangan selanjutnya
 
 Versi 2 yang disarankan:
-- MDX untuk artikel
 - search
 - kategori artikel
 - dark mode
