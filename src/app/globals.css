@@ -50,6 +50,12 @@ body {
 }
 
 /* Isi artikel yang berasal dari file Word */
+/* Jarak saat melompat dari daftar isi */
+.prose-copy h2,
+.prose-copy h3 {
+  scroll-margin-top: 1.5rem;
+}
+
 .prose-copy h2 {
   margin-top: 3rem;
   font-size: 1.6rem;

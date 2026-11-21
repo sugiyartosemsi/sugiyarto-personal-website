@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { articles } from "@/lib/articles";
 import { site } from "@/lib/site";
+import ArticleActions from "@/components/ArticleActions";
+import { TocBox, TocSidebar } from "@/components/TableOfContents";
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -67,9 +69,21 @@ export default async function ArticlePage({
 
   if (!article) notFound();
 
+  const author = article.author ?? site.name;
+  const url = `${site.url}/articles/${article.slug}`;
+  const year = /\b(\d{4})\b/.exec(article.date)?.[1] ?? "t.t.";
+  const dayMonth = article.date.replace(/\s*\b\d{4}\b\s*/, "").trim();
+  // APA 7: Penulis. (Tahun, Tanggal). *Judul*. URL — nama situs dihilangkan karena sama dengan penulis.
+  const citationParts = {
+    before: `${author}. (${year}${dayMonth ? `, ${dayMonth}` : ""}). `,
+    title: article.title,
+    after: `. ${url}`,
+  };
+  const toc = article.toc && article.toc.length >= 3 ? article.toc : [];
+
   return (
-    <article className="container-page py-20">
-      <div className="mx-auto max-w-3xl">
+    <article className="container-page py-20 lg:flex lg:justify-center lg:gap-12">
+      <div className="mx-auto max-w-3xl lg:mx-0 lg:min-w-0 lg:flex-1">
         <Link href="/articles" className="text-sm font-medium text-[var(--accent)]">
           ← Semua artikel
         </Link>
@@ -89,6 +103,7 @@ export default async function ArticlePage({
           {article.title}
         </h1>
         <p className="mt-6 text-xl leading-8 text-gray-600">{article.excerpt}</p>
+        {toc.length > 0 && <TocBox items={toc} />}
 
         {article.html ? (
           <div
@@ -104,8 +119,17 @@ export default async function ArticlePage({
           </div>
         )}
 
-        <ArticleNotice author={article.author ?? site.name} date={article.date} />
+        <ArticleActions
+          slug={article.slug}
+          title={article.title}
+          url={url}
+          citation={`${citationParts.before}${citationParts.title}${citationParts.after}`}
+          citationParts={citationParts}
+        />
+
+        <ArticleNotice author={author} date={article.date} />
       </div>
+      {toc.length > 0 && <TocSidebar items={toc} />}
     </article>
   );
 }
