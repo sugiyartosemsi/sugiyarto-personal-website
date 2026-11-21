@@ -4,3 +4,6 @@ out
 .env
 .env.local
 .DS_Store
+# Dibuat otomatis dari content/articles/*.docx saat build
+/src/generated/
+/public/generated/

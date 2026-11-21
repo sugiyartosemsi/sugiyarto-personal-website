@@ -82,16 +82,34 @@ export default async function ArticlePage({
           <span>•</span>
           <span>{article.readTime}</span>
         </div>
-        <h1 className="mt-6 text-4xl font-semibold leading-tight tracking-[-0.03em] md:text-6xl">
+        <h1
+          className={`mt-6 font-semibold leading-tight tracking-[-0.03em] ${
+            article.title.length > 80 ? "text-3xl md:text-5xl" : "text-4xl md:text-6xl"
+          }`}
+        >
           {article.title}
         </h1>
+        {article.author && (
+          <p className="mt-5 text-sm text-gray-500">
+            Oleh <span className="font-medium text-gray-800">{article.author}</span>
+            {article.authorRole && <> · {article.authorRole}</>}
+          </p>
+        )}
         <p className="mt-6 text-xl leading-8 text-gray-600">{article.excerpt}</p>
 
-        <div className="prose-copy mt-12 border-t border-black/10 pt-8">
-          {article.content.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
+        {article.html ? (
+          <div
+            className="prose-copy mt-12 border-t border-black/10 pt-8"
+            // Isi berasal dari file Word milik pemilik situs di content/articles/, dikonversi saat build.
+            dangerouslySetInnerHTML={{ __html: article.html }}
+          />
+        ) : (
+          <div className="prose-copy mt-12 border-t border-black/10 pt-8">
+            {article.content.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        )}
       </div>
     </article>
   );
