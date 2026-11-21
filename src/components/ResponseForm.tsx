@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
 
 import { site } from "@/lib/site";
 
@@ -18,6 +18,17 @@ export default function ResponseForm({
   email: string;
 }) {
   const [status, setStatus] = useState<Status>("idle");
+  const articleSelect = useRef<HTMLSelectElement>(null);
+
+  // Dari tombol "Tanggapi artikel ini": /?artikel=<slug>#tanggapan → artikel itu langsung terpilih.
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get("artikel");
+    const select = articleSelect.current;
+    if (slug && select && articles.some((a) => a.slug === slug)) {
+      select.value = slug;
+      select.form?.querySelector<HTMLInputElement>("input[name=nama]")?.focus({ preventScroll: true });
+    }
+  }, [articles]);
 
   async function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -77,7 +88,7 @@ export default function ResponseForm({
       </label>
       <label className="text-sm font-medium text-gray-700 md:col-span-2">
         Tulisan yang ditanggapi
-        <select name="artikel" defaultValue={articles[0]?.slug ?? ""} className={field}>
+        <select ref={articleSelect} name="artikel" defaultValue={articles[0]?.slug ?? ""} className={field}>
           {articles.map((a) => (
             <option key={a.slug} value={a.slug}>
               {a.title}

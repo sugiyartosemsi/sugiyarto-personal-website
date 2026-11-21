@@ -381,17 +381,20 @@ async function convert(file, sharp) {
         imageCount += 1;
         const data = await image.readAsBuffer();
         let name = `gambar-${imageCount}`;
+        const size = {};
         if (sharp) {
           name += ".webp";
-          await sharp(data)
+          const info = await sharp(data)
             .resize({ width: 1600, withoutEnlargement: true })
             .webp({ quality: 82 })
             .toFile(path.join(imageDir, name));
+          // Ukuran gambar ditulis di HTML agar tata letak tidak bergeser saat gambar dimuat.
+          Object.assign(size, { width: String(info.width), height: String(info.height) });
         } else {
           name += `.${(image.contentType || "image/png").split("/")[1] || "png"}`;
           await fs.writeFile(path.join(imageDir, name), data);
         }
-        return { src: `/generated/articles/${slug}/${name}`, alt: image.altText || `Gambar ${imageCount}` };
+        return { src: `/generated/articles/${slug}/${name}`, alt: image.altText || `Gambar ${imageCount}`, ...size };
       }),
     },
   );

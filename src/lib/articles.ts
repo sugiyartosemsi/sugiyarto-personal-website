@@ -1,9 +1,12 @@
 import docxArticles from "@/generated/docx-articles.json";
+import { withHeadingIds, type TocItem } from "@/lib/toc";
 
 export type Article = ArticleInput & {
   readTime: string;
   /** Isi artikel dalam HTML, untuk artikel yang berasal dari file Word. */
   html?: string;
+  /** Daftar isi dari subjudul artikel (hanya artikel dari file Word). */
+  toc?: TocItem[];
   author?: string;
   authorRole?: string;
 };
@@ -107,6 +110,7 @@ const DEFAULT_CATEGORY = "Artikel";
 const DEFAULT_OG_IMAGE = "/og-image.jpg";
 
 function fromDocx(docx: DocxArticle, base?: ArticleInput): Article {
+  const { html, toc } = withHeadingIds(docx.html);
   // Data yang ditulis di dokumen Word didahulukan; sisanya memakai data artikel lama (bila ada).
   return {
     slug: docx.slug,
@@ -116,7 +120,8 @@ function fromDocx(docx: DocxArticle, base?: ArticleInput): Article {
     excerpt: docx.excerpt ?? base?.excerpt ?? docx.fallbackExcerpt ?? "",
     ogImage: docx.ogImage ?? base?.ogImage ?? DEFAULT_OG_IMAGE,
     content: [],
-    html: docx.html,
+    html,
+    toc,
     author: docx.author,
     authorRole: docx.authorRole,
     readTime: readTimeFromWords(docx.words),
