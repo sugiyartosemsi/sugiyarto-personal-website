@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
         destination: "/articles/tax-visibility-framework",
         permanent: true,
       },
+      {
+        source: "/articles/masa-depan-administrasi-perpajakan",
+        destination: "/articles/electronic-invoice-administrasi-perpajakan",
+        permanent: true,
+      },
     ];
   },
 };

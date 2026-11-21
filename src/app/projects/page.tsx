@@ -23,7 +23,7 @@ type Project = {
 const projects: Project[] = [
   {
     title: "Tax Administration 3.0",
-    relatedArticle: "masa-depan-administrasi-perpajakan",
+    relatedArticle: "electronic-invoice-administrasi-perpajakan",
     category: "Transformasi Administrasi Pajak",
     description:
       "Eksplorasi transformasi administrasi perpajakan melalui electronic invoice, data transaksi, prefilled return, interoperabilitas, dan compliance by design.",
