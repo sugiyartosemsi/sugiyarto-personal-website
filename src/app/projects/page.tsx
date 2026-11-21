@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import SectionTitle from "@/components/SectionTitle";
 
 export const metadata: Metadata = {
-  title: "Projects",
+  title: "Proyek",
 
   description:
     "Proyek dan kerangka pemikiran Sugiyarto mengenai transformasi administrasi perpajakan, perluasan basis pajak, diagnosis ekonomi, dan kualitas pertumbuhan.",
@@ -42,7 +42,7 @@ export default function ProjectsPage() {
   return (
     <section className="container-page py-20">
       <SectionTitle
-        eyebrow="Projects"
+        eyebrow="Proyek"
         title="Proyek yang sedang dikembangkan"
         description="Kumpulan kerangka pemikiran, dashboard, dan proyek riset yang dapat berkembang menjadi publikasi atau produk kebijakan."
       />

@@ -38,7 +38,7 @@ export default function PublicationsPage() {
   return (
     <section className="container-page py-20">
       <SectionTitle
-        eyebrow="Publications"
+        eyebrow="Publikasi"
         title="Publikasi & Karya Tulis"
         description="Tempat untuk menampilkan policy paper, artikel media, working paper, presentasi, dan publikasi lainnya."
       />

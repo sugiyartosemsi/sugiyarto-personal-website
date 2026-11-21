@@ -36,7 +36,7 @@ export default function Home() {
       <section className="container-page grid min-h-[72vh] items-center gap-12 py-20 md:grid-cols-[1.3fr_.7fr]">
         <div>
           <p className="mb-5 text-sm font-semibold uppercase tracking-[0.25em] text-[var(--accent)]">
-            Personal Knowledge Hub
+            Ruang Gagasan
           </p>
           <h1 className="max-w-4xl text-5xl font-semibold leading-[1.03] tracking-[-0.04em] md:text-6xl">
             Menguji gagasan, memperkaya perspektif, dan merumuskan kebijakan yang lebih baik
@@ -78,7 +78,7 @@ export default function Home() {
       <section className="border-y border-black/5 bg-white">
         <div className="container-page py-20">
           <SectionTitle
-            eyebrow="Areas of Interest"
+            eyebrow="Bidang Minat"
             title="Bidang yang saya tulis dan eksplorasi"
             description="Website ini dirancang sebagai ruang kerja intelektual: ide, analisis, kerangka kebijakan, dan proyek yang dapat terus dikembangkan."
           />
@@ -99,7 +99,7 @@ export default function Home() {
       <section className="container-page py-24">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <SectionTitle
-            eyebrow="Latest Writing"
+            eyebrow="Tulisan Terbaru"
             title="Artikel terbaru"
             description="Catatan dan analisis mengenai ekonomi, perpajakan, dan kebijakan publik."
           />
@@ -118,7 +118,7 @@ export default function Home() {
       <section className="bg-[#111915] text-white">
         <div className="container-page py-24">
           <SectionTitle
-            eyebrow="Selected Projects"
+            eyebrow="Proyek Pilihan"
             title="Proyek dan kerangka pemikiran"
             description="Beberapa proyek dapat berkembang menjadi policy paper, dashboard, artikel, atau riset yang lebih besar."
           />

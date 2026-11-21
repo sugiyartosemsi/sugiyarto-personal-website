@@ -16,7 +16,7 @@ export default function ArticlesPage() {
   return (
     <section className="container-page py-20">
       <SectionTitle
-        eyebrow="Articles"
+        eyebrow="Artikel"
         title="Artikel & Analisis"
         description="Tulisan mengenai ekonomi, perpajakan, administrasi, reformasi kebijakan, dan berbagai tema yang sedang saya eksplorasi."
       />
