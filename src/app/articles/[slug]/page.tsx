@@ -90,12 +90,6 @@ export default async function ArticlePage({
         >
           {article.title}
         </h1>
-        {article.author && (
-          <p className="mt-5 text-sm text-gray-500">
-            Oleh <span className="font-medium text-gray-800">{article.author}</span>
-            {article.authorRole && <> · {article.authorRole}</>}
-          </p>
-        )}
         <p className="mt-6 text-xl leading-8 text-gray-600">{article.excerpt}</p>
 
         {article.html ? (
