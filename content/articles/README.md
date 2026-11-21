@@ -28,13 +28,27 @@ artikel yang sudah terbit, karena alamat lamanya akan hilang.
 
 | Bagian | Cara menulis | Hasil di website |
 |---|---|---|
-| Judul | Paragraf pertama, ditebalkan (atau style *Title*) | Judul artikel |
-| Penulis | `Oleh Nama`, opsional diikuti baris `(Jabatan)` | Baris penulis di bawah judul |
+| Judul | Paragraf pertama, ditebalkan (atau style *Title*). Boleh dua baris, misalnya `Judul:` lalu anak judul | Judul artikel (baris-barisnya digabung) |
+| Penulis | `Oleh Nama` atau `Oleh: Nama` | Nama di keterangan hak cipta dan cara mengutip |
 | Info artikel (opsional) | Baris di awal: `Kategori: ...`, `Tanggal: 21 November 2026`, `Ringkasan: ...` | Label kategori, tanggal, dan ringkasan |
-| Subjudul | Paragraf pendek yang seluruhnya **tebal**, atau style *Heading 1–3* | Subjudul |
+| Subjudul | Paragraf pendek yang seluruhnya **tebal**, atau style *Heading*. Tingkatnya dibaca dari penomoran: A. → bab, A.1 → subbab, A.1.1 / 1. → anak subbab | Subjudul dan daftar isi |
 | Penomoran | Penomoran otomatis Word (A., A.1, 1., …) | Tampil sama seperti di Word |
 | Gambar | Disisipkan seperti biasa | Ikut tampil, otomatis dikompres |
 | Tebal, miring, tautan, tabel | Seperti biasa | Ikut tampil |
+
+Info artikel juga bisa ditulis di file pendamping bernama sama dengan
+ekstensi `.json`, tanpa mengubah dokumen Word. Contoh
+`content/articles/tax-ratio.json`:
+
+```json
+{
+  "kategori": "Ekonomi & Fiskal",
+  "tanggal": "21 November 2026",
+  "ringkasan": "Satu atau dua kalimat ringkasan artikel."
+}
+```
+
+Baris info di dokumen Word tetap didahulukan bila keduanya ada.
 
 Jika info artikel tidak ditulis:
 - **Kategori** menjadi "Artikel".

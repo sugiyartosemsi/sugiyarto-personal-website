@@ -161,14 +161,16 @@ const WEB_STYLES = {
 };
 
 function headingLevel(text, label, styleName) {
+  // Penomoran menentukan tingkat lebih dulu, karena penulis kadang memakai satu style untuk semua tingkat.
+  const full = `${label} ${text}`.trim();
+  if (/^[A-Z]\.\s*\d+\.\d+[.\s]/.test(full)) return 4; // A.4.1, B.5.2
+  if (/^[A-Z]\.?\s*\d+[.\s]/.test(full)) return 3; // A.1, B.2, A. 2
+  if (/^[A-Z]\.\s/.test(full) || REFERENCE_HEADINGS.test(text.trim())) return 2; // A., B., Daftar Pustaka
+  if (/^\d+\.\s/.test(full)) return 4; // 1., 2.
   const s = (styleName || "").toLowerCase();
   if (s === "heading 1" || s === "heading 2") return 2;
   if (s === "heading 3") return 3;
   if (s.startsWith("heading")) return 4;
-  const full = `${label} ${text}`.trim();
-  if (/^[A-Z]\.?\s*\d+[.\s]/.test(full)) return 3; // A.1, B.2, A. 2
-  if (/^[A-Z]\.\s/.test(full) || REFERENCE_HEADINGS.test(text.trim())) return 2; // A., B., Daftar Pustaka
-  if (/^\d+\.\s/.test(full)) return 4; // 1., 2.
   return 3;
 }
 
@@ -257,14 +259,21 @@ function preprocess(documentXml, numberingXml, stylesXml) {
 
     if (!started) {
       const metaMatch = META_LINE.exec(text);
-      if (!seenTitle && !numPr && (isAllBold(p) || /^(title|heading 1)$/i.test(styleName || ""))) {
+      const titleLike = !numPr && (isAllBold(p) || /^(title|subtitle)$/i.test(styleName || ""));
+      if (!seenTitle && (titleLike || /^heading 1$/i.test(styleName || ""))) {
         meta.title = text;
         seenTitle = true;
         body.removeChild(p);
         continue;
       }
-      if (seenTitle && /^oleh\s+/i.test(text)) {
-        meta.author = text.replace(/^oleh\s+/i, "").trim();
+      // Judul yang ditulis dalam beberapa baris (mis. "Judul:" lalu subjudul) digabung menjadi satu.
+      if (seenTitle && !meta.author && titleLike && !/^oleh\b/i.test(text) && !META_LINE.test(text)) {
+        meta.title = /[:–—-]$/.test(meta.title) ? `${meta.title} ${text}` : `${meta.title}: ${text}`;
+        body.removeChild(p);
+        continue;
+      }
+      if (seenTitle && /^oleh\s*:?\s+/i.test(text)) {
+        meta.author = text.replace(/^oleh\s*:?\s+/i, "").trim();
         expectRole = true;
         body.removeChild(p);
         continue;
@@ -356,6 +365,18 @@ async function convert(file, sharp) {
   if (!documentXml) throw new Error("word/document.xml tidak ditemukan");
 
   const { xml, meta } = preprocess(documentXml, numberingXml, stylesXml);
+
+  // Keterangan pendamping (opsional): content/articles/<nama-file>.json
+  // berisi {"kategori": "...", "tanggal": "...", "ringkasan": "..."}. Baris di dokumen Word tetap didahulukan.
+  const sidecar = file.replace(/\.docx$/i, ".json");
+  try {
+    const extra = JSON.parse(await fs.readFile(sidecar, "utf8"));
+    for (const key of ["kategori", "tanggal", "ringkasan"]) {
+      if (!meta[key] && typeof extra[key] === "string" && extra[key].trim()) meta[key] = extra[key].trim();
+    }
+  } catch (error) {
+    if (error.code !== "ENOENT") console.warn(`[artikel]   peringatan: ${path.relative(ROOT, sidecar)} tidak terbaca (${error.message})`);
+  }
   zip.file("word/document.xml", xml);
   if (stylesXml) zip.file("word/styles.xml", addWebStyles(stylesXml));
   const buffer = await zip.generateAsync({ type: "nodebuffer" });
