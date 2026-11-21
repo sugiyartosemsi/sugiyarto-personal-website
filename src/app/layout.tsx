@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -56,6 +57,8 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        {/* Statistik pengunjung Vercel Web Analytics (tanpa cookie). Aktifkan di dashboard Vercel → Analytics. */}
+        <Analytics />
       </body>
     </html>
   );
