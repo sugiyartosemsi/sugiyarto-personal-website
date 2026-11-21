@@ -17,6 +17,7 @@ export const metadata: Metadata = {
 
   alternates: {
     canonical: "/",
+    types: { "application/rss+xml": [{ url: "/feed.xml", title: "Artikel Sugiyarto" }] },
   },
 
   openGraph: {
@@ -29,9 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
+        url: "/og-image.jpg",
         alt: "Sugiyarto - Ekonomi, Perpajakan dan Kebijakan Publik",
       },
     ],
@@ -42,7 +41,7 @@ export const metadata: Metadata = {
     title: "Sugiyarto | Ekonomi, Perpajakan & Kebijakan Publik",
     description:
       "Gagasan dan analisis mengenai ekonomi, perpajakan, kebijakan fiskal, dan kebijakan publik.",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
 };
 

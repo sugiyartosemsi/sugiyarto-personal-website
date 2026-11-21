@@ -52,5 +52,5 @@ kolom ganda, header/footer, dan persamaan matematika.
 
 ## Gambar pratinjau media sosial (opsional)
 
-Simpan gambar 1200×630 px di `public/og/articles/<nama-file>.png`.
+Simpan gambar 1200×630 px di `public/og/articles/<nama-file>.jpg` (atau .png).
 Tanpa gambar ini, dipakai gambar umum situs.

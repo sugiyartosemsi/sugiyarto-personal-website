@@ -13,6 +13,7 @@ export default function Footer() {
           <Link href="/articles">Artikel</Link>
           <Link href="/projects">Proyek</Link>
           <Link href="/contact">Kontak</Link>
+          <a href="/feed.xml">RSS</a>
         </div>
         <p>© {new Date().getFullYear()} {site.name}</p>
       </div>

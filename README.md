@@ -1,77 +1,47 @@
-# Personal Website V1 — Sugiyarto
+# Website Sugiyarto
 
-Website pribadi profesional berbasis Next.js + TypeScript + Tailwind CSS.
+Website pribadi di [www.sugiyarto.id](https://www.sugiyarto.id), dibangun dengan Next.js, TypeScript, dan Tailwind CSS, serta di-deploy otomatis oleh Vercel setiap ada perubahan di branch `main`.
+
+## Menambah atau mengganti artikel
+
+Unggah file Word (`.docx`) ke folder [`content/articles/`](content/articles/). Artikel terbit 1–2 menit kemudian. Panduan lengkapnya ada di [content/articles/README.md](content/articles/README.md).
+
+Dua artikel lama masih ditulis langsung di kode, di `src/lib/articles.ts`. Jika diunggah ulang sebagai file Word dengan nama yang sama dengan alamatnya, versi Word yang dipakai.
 
 ## Halaman
 
-- Home
-- About
-- Articles
-- Publications
-- Projects
-- Contact
+| Halaman | Alamat | Isi diatur di |
+|---|---|---|
+| Beranda (termasuk form tanggapan) | `/` | `src/app/page.tsx` |
+| Tentang | `/about` | `src/app/about/page.tsx` |
+| Artikel | `/articles` | `content/articles/`, `src/lib/articles.ts` |
+| Publikasi | `/publications` | `src/app/publications/page.tsx` |
+| Proyek | `/projects` | `src/app/projects/page.tsx` |
+| Kontak | `/contact` | `src/app/contact/page.tsx` |
+| RSS | `/feed.xml` | otomatis dari daftar artikel |
+| Sitemap | `/sitemap.xml` | otomatis dari daftar artikel |
 
-## Cara menjalankan
+Data umum situs (nama, tagline, email, alamat situs, ID Formspree untuk form tanggapan) ada di `src/lib/site.ts`.
 
-Pastikan Node.js sudah terpasang.
+## Menjalankan di komputer sendiri
+
+Perlu Node.js. Di Windows PowerShell, gunakan `npm.cmd` jika `npm` diblokir.
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-Buka:
-
-```text
-http://localhost:3000
-```
-
-## Build production
+Buka `http://localhost:3000`. Untuk mengecek versi produksi:
 
 ```bash
 npm run build
 npm start
 ```
 
-## Bagian yang perlu Anda ubah terlebih dahulu
+`npm run dev` dan `npm run build` otomatis mengonversi file Word di `content/articles/` terlebih dahulu (`scripts/build-articles.mjs`).
 
-Edit:
+## Catatan
 
-```text
-src/lib/site.ts
-```
-
-Di file tersebut Anda dapat mengganti:
-- nama
-- tagline
-- deskripsi
-- email
-- lokasi
-- link LinkedIn/GitHub
-
-Artikel ditambahkan dengan mengunggah file Word (.docx) ke folder
-`content/articles/`. Panduan lengkapnya ada di
-[content/articles/README.md](content/articles/README.md).
-
-Artikel lama yang masih ditulis langsung di kode ada di `src/lib/articles.ts`.
-
-## Deploy ke Vercel
-
-1. Buat repository baru di GitHub.
-2. Push folder ini ke GitHub.
-3. Login ke Vercel.
-4. Pilih **Add New → Project**.
-5. Import repository GitHub.
-6. Klik **Deploy**.
-7. Setelah online, tambahkan domain pribadi melalui **Settings → Domains**.
-
-## Pengembangan selanjutnya
-
-Versi 2 yang disarankan:
-- search
-- kategori artikel
-- dark mode
-- analytics
-- sitemap
-- RSS
-- newsletter
+- `public/google4a821ebca31b9edc.html` adalah file verifikasi Google Search Console. Jangan dihapus.
+- Gambar pratinjau media sosial ada di `public/og-image.jpg` dan `public/og/articles/`.

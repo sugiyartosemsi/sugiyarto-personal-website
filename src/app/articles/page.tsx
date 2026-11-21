@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import ArticleCard from "@/components/ArticleCard";
+import ArticleList from "@/components/ArticleList";
 import SectionTitle from "@/components/SectionTitle";
 import { articles } from "@/lib/articles";
 export const metadata: Metadata = {
@@ -21,11 +21,7 @@ export default function ArticlesPage() {
         description="Tulisan mengenai ekonomi, perpajakan, administrasi, reformasi kebijakan, dan berbagai tema yang sedang saya eksplorasi."
       />
 
-      <div className="mt-12 grid gap-5 lg:grid-cols-3">
-        {articles.map((article) => (
-          <ArticleCard key={article.slug} article={article} />
-        ))}
-      </div>
+      <ArticleList articles={articles} />
     </section>
   );
 }

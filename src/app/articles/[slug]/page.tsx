@@ -44,8 +44,6 @@ export async function generateMetadata({
     images: [
       {
         url: article.ogImage,
-        width: 1200,
-        height: 630,
         alt: `${article.title} | Sugiyarto`,
       },
     ],

@@ -404,8 +404,11 @@ async function convert(file, sharp) {
   const bodyHtml = referencesAt >= 0 ? html.slice(0, referencesAt) : html;
   const words = htmlToText(bodyHtml).split(" ").filter(Boolean).length;
 
-  const ogFile = path.join(ROOT, "public", "og", "articles", `${slug}.png`);
-  const ogImage = await fs.access(ogFile).then(() => `/og/articles/${slug}.png`, () => undefined);
+  let ogImage;
+  for (const ext of ["jpg", "jpeg", "png", "webp"]) {
+    const exists = await fs.access(path.join(ROOT, "public", "og", "articles", `${slug}.${ext}`)).then(() => true, () => false);
+    if (exists) { ogImage = `/og/articles/${slug}.${ext}`; break; }
+  }
 
   const modified = /<dcterms:modified[^>]*>([^<]+)</.exec(coreXml || "")?.[1];
   return {
