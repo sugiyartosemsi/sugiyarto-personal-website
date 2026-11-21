@@ -2,10 +2,11 @@
 
 import { useState, type FormEvent } from "react";
 
-// Isi dengan ID form Formspree (https://formspree.io) di pengaturan Vercel:
-// Settings → Environment Variables → NEXT_PUBLIC_FORMSPREE_ID.
-// Selama belum diisi, tombol kirim membuka aplikasi email pembaca (mailto).
-const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID;
+import { site } from "@/lib/site";
+
+// ID form Formspree diatur di src/lib/site.ts (formspreeId); dapat ditimpa dengan
+// NEXT_PUBLIC_FORMSPREE_ID di Vercel. Tanpa ID, tombol kirim membuka aplikasi email (mailto).
+const FORMSPREE_ID = process.env.NEXT_PUBLIC_FORMSPREE_ID || site.formspreeId;
 
 type Status = "idle" | "sending" | "sent" | "error";
 
