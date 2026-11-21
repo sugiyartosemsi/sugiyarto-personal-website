@@ -12,21 +12,24 @@ const expertise = [
   "Analisis Data & Kebijakan Publik",
 ];
 
-const projects = [
+const projects: { title: string; description: string; articleSlug: string }[] = [
   {
     title: "Transformasi Administrasi Pajak",
     description:
       "Gagasan mengenai electronic invoice, data transaksi, prefilled return, dan compliance by design.",
+    articleSlug: "masa-depan-administrasi-perpajakan",
   },
   {
     title: "Perluasan dan Kualitas Basis Pajak",
     description:
       "Kerangka untuk meningkatkan visibilitas ekonomi informal menuju basis pajak yang lebih produktif.",
+    articleSlug: "tax-ratio-dan-kualitas-basis-pajak",
   },
   {
     title: "Diagnosis Ekonomi dan Kualitas Pertumbuhan",
     description:
       "Dashboard risiko ekonomi yang menggabungkan siklus, rumah tangga, keuangan, eksternal, dan fiskal.",
+    articleSlug: "ews-ekonomi-dan-kualitas-pertumbuhan",
   },
 ];
 
@@ -127,6 +130,12 @@ export default function Home() {
               <div key={project.title} className="rounded-3xl border border-white/10 p-6">
                 <h3 className="text-xl font-semibold">{project.title}</h3>
                 <p className="mt-4 leading-7 text-white/65">{project.description}</p>
+                <Link
+                  href={`/articles/${project.articleSlug}`}
+                  className="mt-5 inline-block text-sm font-medium text-white hover:underline"
+                >
+                  Baca artikel terkait →
+                </Link>
               </div>
             ))}
           </div>
