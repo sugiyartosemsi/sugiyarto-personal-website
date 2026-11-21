@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { articles } from "@/lib/articles";
+import { site } from "@/lib/site";
 
 export function generateStaticParams() {
   return articles.map((article) => ({ slug: article.slug }));
@@ -110,7 +111,34 @@ export default async function ArticlePage({
             ))}
           </div>
         )}
+
+        <ArticleNotice author={article.author ?? site.name} date={article.date} />
       </div>
     </article>
+  );
+}
+
+function ArticleNotice({ author, date }: { author: string; date: string }) {
+  // Tahun hak cipta = tahun terbit artikel (mis. "26 Agustus 2026" → 2026).
+  const year = /\b(\d{4})\b/.exec(date)?.[1] ?? String(new Date().getFullYear());
+
+  return (
+    <aside
+      aria-label="Keterangan artikel"
+      className="mt-16 space-y-3 rounded-2xl border border-black/10 bg-white p-6 text-sm leading-6 text-gray-600"
+    >
+      <p>
+        <span className="font-medium text-gray-800">Pendapat pribadi.</span> Artikel ini merupakan
+        pendapat pribadi penulis dan tidak mencerminkan sikap instansi tempat penulis bekerja.
+      </p>
+      <p>
+        <span className="font-medium text-gray-800">
+          © {year} {author}.
+        </span>{" "}
+        Hak cipta dilindungi undang-undang. Boleh dikutip dengan menyebutkan nama penulis dan tautan
+        ke artikel ini. Dilarang memperbanyak atau menyebarluaskan sebagian atau seluruh isi artikel
+        tanpa izin tertulis dari penulis.
+      </p>
+    </aside>
   );
 }
