@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ArticleCard from "@/components/ArticleCard";
+import ResponseForm from "@/components/ResponseForm";
 import SectionTitle from "@/components/SectionTitle";
 import { articles } from "@/lib/articles";
 import { site } from "@/lib/site";
@@ -148,21 +149,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container-page py-24">
+      <section id="tanggapan" className="container-page scroll-mt-24 py-24">
         <div className="rounded-[2.25rem] bg-white p-8 shadow-sm md:p-14">
           <p className="text-sm font-semibold text-[var(--accent)]">Mari terhubung</p>
           <h2 className="mt-4 max-w-3xl text-3xl font-semibold tracking-tight md:text-5xl">
             Ide yang baik menjadi lebih kuat ketika diuji, diperdebatkan, dan dikembangkan.
           </h2>
           <p className="mt-5 max-w-2xl leading-7 text-gray-600">
-            Gunakan halaman kontak untuk diskusi, kolaborasi, atau pertukaran gagasan.
+            Punya pandangan berbeda, data pembanding, atau gagasan lanjutan atas tulisan di sini?
+            Sampaikan tanggapan Anda.
           </p>
-          <Link
-            href="/contact"
-            className="mt-8 inline-block rounded-full bg-[var(--accent)] px-6 py-3 text-sm font-medium text-white"
-          >
-            Hubungi Saya
-          </Link>
+          <ResponseForm
+            articles={articles.map(({ slug, title }) => ({ slug, title }))}
+            email={site.email}
+          />
         </div>
       </section>
     </>
