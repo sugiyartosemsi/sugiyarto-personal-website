@@ -267,13 +267,14 @@ function preprocess(documentXml, numberingXml, stylesXml) {
         continue;
       }
       // Judul yang ditulis dalam beberapa baris (mis. "Judul:" lalu subjudul) digabung menjadi satu.
-      if (seenTitle && !meta.author && titleLike && !/^oleh\b/i.test(text) && !META_LINE.test(text)) {
+      if (seenTitle && !meta.author && titleLike && !/^\(?\s*oleh\b/i.test(text) && !META_LINE.test(text)) {
         meta.title = /[:–—-]$/.test(meta.title) ? `${meta.title} ${text}` : `${meta.title}: ${text}`;
         body.removeChild(p);
         continue;
       }
-      if (seenTitle && /^oleh\s*:?\s+/i.test(text)) {
-        meta.author = text.replace(/^oleh\s*:?\s+/i, "").trim();
+      if (seenTitle && /^\(?\s*oleh\s*:?\s+/i.test(text)) {
+        // "Oleh Nama", "Oleh: Nama", atau "(Oleh Nama)"
+        meta.author = text.replace(/^\(?\s*oleh\s*:?\s+/i, "").replace(/\)\s*$/, "").trim();
         expectRole = true;
         body.removeChild(p);
         continue;
@@ -296,9 +297,12 @@ function preprocess(documentXml, numberingXml, stylesXml) {
       ? label(attr(firstChild(numPr, "numId"), "val"), Number(attr(firstChild(numPr, "ilvl"), "val") ?? 0))
       : "";
     const isHeadingStyle = /^heading [1-6]$/i.test(styleName || "");
+    const shortLine = !hasImage && text.length <= MAX_HEADING_LENGTH && !/[.:;]$/.test(text);
     const looksLikeHeading =
       isHeadingStyle ||
-      (!hasImage && text.length <= MAX_HEADING_LENGTH && !/[.:;]$/.test(text) && isAllBold(p)) ||
+      (shortLine && isAllBold(p)) ||
+      // Bernomor seperti subbab (A.4, A.4.1, C.2) walau lupa ditebalkan
+      (shortLine && !numPr && /^[A-Z]\.\d+(\.\d+)*\.?\s+\S/.test(text)) ||
       (!hasImage && REFERENCE_HEADINGS.test(text));
 
     if (looksLikeHeading) {
