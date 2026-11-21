@@ -29,9 +29,9 @@ artikel yang sudah terbit, karena alamat lamanya akan hilang.
 | Bagian | Cara menulis | Hasil di website |
 |---|---|---|
 | Judul | Paragraf pertama, ditebalkan (atau style *Title*). Boleh dua baris, misalnya `Judul:` lalu anak judul | Judul artikel (baris-barisnya digabung) |
-| Penulis | `Oleh Nama` atau `Oleh: Nama` | Nama di keterangan hak cipta dan cara mengutip |
+| Penulis | `Oleh Nama`, `Oleh: Nama`, atau `(Oleh Nama)` | Nama di keterangan hak cipta dan cara mengutip |
 | Info artikel (opsional) | Baris di awal: `Kategori: ...`, `Tanggal: 21 November 2026`, `Ringkasan: ...` | Label kategori, tanggal, dan ringkasan |
-| Subjudul | Paragraf pendek yang seluruhnya **tebal**, atau style *Heading*. Tingkatnya dibaca dari penomoran: A. → bab, A.1 → subbab, A.1.1 / 1. → anak subbab | Subjudul dan daftar isi |
+| Subjudul | Paragraf pendek yang seluruhnya **tebal**, atau style *Heading*. Tingkatnya dibaca dari penomoran: A. → bab, A.1 → subbab, A.1.1 / 1. → anak subbab. Baris pendek bernomor subbab (A.4, C.2) tetap dikenali walau lupa ditebalkan | Subjudul dan daftar isi |
 | Penomoran | Penomoran otomatis Word (A., A.1, 1., …) | Tampil sama seperti di Word |
 | Gambar | Disisipkan seperti biasa | Ikut tampil, otomatis dikompres |
 | Tebal, miring, tautan, tabel | Seperti biasa | Ikut tampil |

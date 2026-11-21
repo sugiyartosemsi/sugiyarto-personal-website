@@ -68,7 +68,8 @@ const articleInputs: ArticleInput[] = [
       "Menaikkan penerimaan tidak selalu berarti menaikkan tarif. Visibilitas ekonomi, administrasi, dan desain basis pajak sama pentingnya.",
     category: "Ekonomi & Fiskal",
     date: "20 Agustus 2026",
-    ogImage: "/og/articles/tax-ratio-dan-kualitas-basis-pajak.jpg",
+    // Gambar lama bertuliskan judul lama; versi Word kini berjudul "Tax Visibility Framework".
+    ogImage: "/og-image.jpg",
     content: [
       "Tax ratio sering dibahas seolah-olah hanya ditentukan oleh tarif. Padahal kualitas basis pajak, tingkat formalitas ekonomi, kapasitas administrasi, dan struktur penerimaan memiliki pengaruh yang sangat besar.",
       "Kebijakan yang baik perlu meningkatkan visibilitas transaksi dan memperbaiki kepatuhan tanpa menciptakan biaya administrasi yang berlebihan.",
